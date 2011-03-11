@@ -29,6 +29,7 @@ $root->tzil_set_entry('test.txt',$test_txt);
 is($root->tzil_get_entry('test.txt'), $test_txt, 'Checking entry test.txt of root');
 
 my $dir = File::Temp->newdir();
+$root->tzil_to($dir);
 
 is_dir($dir, $Bin.'/result-01', 'Checking resulting directory', [], 'verbose' );
 

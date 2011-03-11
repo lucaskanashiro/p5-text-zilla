@@ -21,6 +21,6 @@ around BUILDARGS => sub {
 	}
 };
 
-sub tzil_generate { shift->content }
+sub tzil_content { shift->content }
 
 1;

@@ -1,4 +1,4 @@
-package Text::Zilla::Meta::Class;
+package Text::Zilla::Role::MetaClass;
 # ABSTRACT: I'm a little teapot, short and stout. Here is my handle, here is my spout
 use Moose::Role;
 

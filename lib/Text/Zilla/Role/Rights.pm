@@ -1,5 +1,5 @@
 package Text::Zilla::Role::Rights;
-# ABSTRACT: Required role for all files
+# ABSTRACT: Role for the rights of a file
 use Moose::Role;
 
 sub tzil_r { shift->tzil_is_readable(@_) }
