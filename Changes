@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+0.002     2011-03-11 17:01:59 Europe/Berlin
 	- Added ShortBase and made it default
 	- Added pathentry test
 
