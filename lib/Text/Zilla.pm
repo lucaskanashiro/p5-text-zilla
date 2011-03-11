@@ -22,7 +22,7 @@ sub init_meta {
 sub tzil_file {
 	my ( $meta, @file_class_names ) = @_;
 	$meta->tzil_type('file');
-	push @file_class_names, 'Base' if !@file_class_names;
+	push @file_class_names, 'ShortBase' if !@file_class_names;
 	for (@file_class_names) {
 		my $file_class = __PACKAGE__.'::Role::File::'.$_;
 		Moose::with( $meta, $file_class );
@@ -32,7 +32,7 @@ sub tzil_file {
 sub tzil_dir {
 	my ( $meta, @dir_class_names ) = @_;
 	$meta->tzil_type('dir');
-	push @dir_class_names, 'Base' if !@dir_class_names;
+	push @dir_class_names, 'ShortBase' if !@dir_class_names;
 	for (@dir_class_names) {
 		my $dir_class = __PACKAGE__.'::Role::Dir::'.$_;
 		Moose::with( $meta, $dir_class );

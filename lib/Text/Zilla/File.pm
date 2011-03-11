@@ -2,13 +2,13 @@ package Text::Zilla::File;
 # ABSTRACT: A base file
 use Text::Zilla;
 
-tzil_file;
-
 has content => (
 	is => 'rw',
 	isa => 'Str',
 	default => sub {""},
 );
+
+tzil_file;
 
 around BUILDARGS => sub {
 	my $orig  = shift;
@@ -20,7 +20,5 @@ around BUILDARGS => sub {
 		return $class->$orig(@_);
 	}
 };
-
-sub tzil_content { shift->content }
 
 1;
