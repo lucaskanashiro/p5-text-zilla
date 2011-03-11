@@ -4,14 +4,17 @@ package Text::Zilla::Types;
 use MooseX::Types -declare => [qw(
 	TzilFile
 	TzilDir
+	TzilFileOrDir
 	TzilDirEntries
 )];
 
 use MooseX::Types::Moose qw/HashRef/;
 
-role_type TzilFile, { class => 'Text::Zilla::Role::File' };
-role_type TzilDir, { class => 'Text::Zilla::Role::Dir' };
+role_type TzilFile, { role => 'Text::Zilla::Role::File' };
+role_type TzilDir, { role => 'Text::Zilla::Role::Dir' };
 
-subtype TzilDirEntries, as HashRef[TzilFile|TzilDir];
+subtype TzilFileOrDir, as TzilFile|TzilDir;
+
+subtype TzilDirEntries, as HashRef[TzilFileOrDir];
 
 1;
