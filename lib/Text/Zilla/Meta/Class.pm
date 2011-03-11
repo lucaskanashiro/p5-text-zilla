@@ -1,8 +1,6 @@
 package Text::Zilla::Meta::Class;
 # ABSTRACT: I'm a little teapot, short and stout. Here is my handle, here is my spout
-use Moose;
-
-extends 'Moose::Meta::Class';
+use Moose::Role;
 
 has tzil_type => (
 	is => 'rw',

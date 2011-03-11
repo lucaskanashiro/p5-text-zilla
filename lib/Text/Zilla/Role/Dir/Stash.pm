@@ -3,7 +3,7 @@ package Text::Zilla::Role::Dir::Stash;
 use Moose::Role;
 
 with qw(
-	Text::Zilla::Role::Base
+	Text::Zilla::Role::Dir::Base
 );
 
 has tzil_stash => (

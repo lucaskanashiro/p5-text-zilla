@@ -1,6 +1,7 @@
 package Text::Zilla::Role::Dir;
 # ABSTRACT: Required role for all directories
 use Moose::Role;
+use Text::Zilla::Types ':all';
 
 with qw(
 	Text::Zilla::Role::Rights
@@ -8,14 +9,14 @@ with qw(
 
 has tzil_parent => (
 	is => 'rw',
-	isa => 'Text::Zilla::Role::Dir',
+	isa => TzilDir,
 	predicate => 'has_tzil_parent',
 );
 
 has tzil_dir_entries => (
 	traits    => ['Hash'],
 	is        => 'ro',
-	isa       => 'HashRef[Text::Zilla::Role::File|Text::Zilla::Role::Dir]',
+	isa       => TzilDirEntries,
 	default   => sub {{}},
 	handles   => {
 		tzil_set_entry => 'set',

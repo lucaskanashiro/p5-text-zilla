@@ -1,22 +1,28 @@
 package Text::Zilla;
+# ABSTRACT: Generating files as easy as possible
 
 use Moose ();
 use Moose::Exporter;
 
-Moose::Exporter->setup_import_methods(
+my ( $import, $unimport, $init_meta ) = Moose::Exporter->setup_import_methods(
 	with_meta => [ 'tzil_file', 'tzil_dir' ],
 	also      => 'Moose',
+    class_metaroles => {
+        class       => [ 'Text::Zilla::Meta::Class' ],
+    },
 );
 
 sub init_meta {
-	shift;
-	return Moose->init_meta( @_, metaclass => 'Text::Zilla::Meta::Class' );
+    my ( $class, %args ) = @_;
+    my $for = $args{for_class};
+    Moose->init_meta( for_class => $for );
+    goto $init_meta;
 }
 
 sub tzil_file {
 	my ( $meta, $file_class_name ) = @_;
 	$meta->tzil_type('file');
-	$file_class_name = 'TT' if !$file_class_name;
+	$file_class_name = 'Base' if !$file_class_name;
 	my $file_class = __PACKAGE__.'::Role::File::'.$file_class_name;
 	Moose::with( $meta, $file_class );
 }
