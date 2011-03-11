@@ -1,5 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+	- Added pathentry test
 
 0.001     2011-03-11 05:58:30 Europe/Berlin
+	- First release
