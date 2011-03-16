@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+0.003     2011-03-16 22:35:10 Europe/Berlin
 	- Implemented Text::Zilla::Role::Stash (only tested with ::File::TT)
 	- Implemented Text::Zilla::Dir::FromHash
 
