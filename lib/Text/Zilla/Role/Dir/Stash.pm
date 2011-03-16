@@ -4,27 +4,16 @@ use Moose::Role;
 
 with qw(
 	Text::Zilla::Role::Dir::Base
+	Text::Zilla::Role::Stash
 );
 
-has tzil_stash => (
-	traits    => ['Hash'],
-	is        => 'ro',
-	isa       => 'HashRef',
-	default   => sub {{}},
-	handles   => {
-		tzil_stash_set => 'set',
-		tzil_stash_get => 'get',
-		tzil_stash_empty => 'is_empty',
-		tzil_stash_count => 'count',
-		tzil_stash_delete => 'delete',
-	},
-);
-
-after tzil_set_entry => sub {
-	my ( $self, $name, $obj ) = @_;
-	if ($obj->does('Text::Zilla::Role::Dir::Stash')) {
-		my %new_stash = %{$obj->tzil_stash};
-		$obj->tzil_stash(\%new_stash);
+before tzil_to => sub {
+	my ( $self ) = @_;
+	for (keys %{$self->tzil_dir_entries}) {
+		my $entry = $self->tzil_get_entry($_);
+		if ($entry->does('Text::Zilla::Role::Stash')) {
+			$entry->parent_tzil_stash(%{$self->tzil_stash});
+		}
 	}
 };
 

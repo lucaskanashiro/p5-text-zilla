@@ -10,7 +10,7 @@ around BUILDARGS => sub {
 	my $orig  = shift;
 	my $class = shift;
 	my $hash = shift;
-	
+
 	die __PACKAGE__." requires a hashref as first parameter" if ref $hash ne 'HASH';
 
 	return $class->$orig( tzil_dir_entries => $class->generate_tzil_entries($hash) );
